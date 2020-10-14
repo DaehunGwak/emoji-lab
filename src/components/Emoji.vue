@@ -1,35 +1,34 @@
 <template>
-  <div class="emoji">
-    <div id="emojiFirst">🥺</div>
+  <div>
+    <pre>
+      <router-link to="emoji">go to emoji</router-link>
+
+      <router-link to="rolling">go to rolling</router-link>
+    </pre>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+  name: 'emoji',
+  data() {
+    return {
+      url: process.env.BASE_URL
+    }
+  },
+  created () {
+    const history = this.$router.history
+    const targetUrl = `${this.url}rolling`
+    console.log(history.current)
+    console.log(targetUrl)
+    if (history.current.path !== targetUrl) {
+      this.$router.push(targetUrl)
+    }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.emoji {
-  font-size: 10rem;
-  text-align: center;
-}
+<style>
 
-#emojiFirst {
-  display: inline-block;
-  padding-top: 2%;
-  animation-duration: 2s;
-  animation-name: spin;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-@keyframes spin {
-  100% { transform: rotate(360deg);}
-}
 </style>

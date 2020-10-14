@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Emoji from './components/Emoji.vue'
+import Emoji from "@/components/Emoji";
 
 export default {
   name: 'App',
